@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Rose Day</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to bottom, #ffdde1, #ee9ca7);
+}
+
+/* ---------- PAGES ---------- */
+.page {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: transform 1.4s ease, opacity 1.4s ease;
+}
+
+/* PAGE 1 */
+#page1 {
+  z-index: 3;
+}
+
+/* PAGE 2 */
+#page2 {
+  background: linear-gradient(to bottom, #fbc2eb, #a18cd1);
+  opacity: 0;
+  transform: scale(1.2);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* PAGE 2 ACTIVE */
+.show-page2 #page1 {
+  transform: scale(1.8);
+  opacity: 0;
+}
+
+.show-page2 #page2 {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+/* ---------- CONTENT ---------- */
+.container h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #b11226;
+}
+
+.container h3 {
+  color:#7a1223;
+  font-style:italic;
+  margin-top:8px;
+}
+
+.container p {
+  margin: 15px 0 25px;
+  font-size: 1.2rem;
+  color: #5a0f1b;
+  line-height: 1.6;
+}
+
+/* WAX SEAL */
+.seal-btn {
+  cursor: pointer;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.seal-btn img {
+  width: 130px;
+  filter: drop-shadow(0 12px 25px rgba(0,0,0,0.35));
+}
+
+.seal-btn:hover {
+  transform: scale(1.1);
+}
+
+/* ---------- MESSAGE CARD ---------- */
+.card {
+  position: relative;
+  z-index: 3;
+  background: rgba(255,255,255,0.88);
+  padding: 45px;
+  border-radius: 22px;
+  max-width: 460px;
+  animation: rise 1.6s ease;
+  backdrop-filter: blur(6px);
+}
+
+@keyframes rise {
+  from { transform: translateY(200px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.card h2 {
+  font-family: 'Playfair Display', serif;
+  color: #9b1048;
+  font-size: 2.4rem;
+}
+
+.card p {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  color: #5c184e;
+  line-height: 1.6;
+}
+
+/* ---------- CONFETTI ---------- */
+.confetti {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.confetti span {
+  position: absolute;
+  top: -10px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* ---------- FIREWORKS ---------- */
+.spark {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: sparkMove 1.2s ease-out forwards;
+}
+
+@keyframes sparkMove {
+  to {
+    transform: translate(var(--x), var(--y));
+    opacity: 0;
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 600px) {
+
+  .container h1 {
+    font-size: 2.2rem;
+  }
+
+  .container h3 {
+    font-size: 1.05rem;
+  }
+
+  .container p {
+    font-size: 1rem;
+    padding: 0 16px;
+  }
+
+  .seal-btn img {
+    width: 100px;
+  }
+
+  .card {
+    max-width: 90%;
+    padding: 28px 22px;
+  }
+
+  .card h2 {
+    font-size: 1.9rem;
+  }
+
+  .card p {
+    font-size: 0.98rem;
+  }
+
+  .show-page2 #page1 {
+    transform: scale(1.4);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="blue-slowed.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page" id="page1">
+  <div class="container">
+    <h1>🌹 Happy Rose Day 🌹</h1>
+    <h3>To my dearest Kruthika,</h3>
+
+    <p>
+      Every rose speaks the language of love.<br>
+      What flower could I give to my darling?<br>
+      —<br>
+      who’s already a ROSE herself.
+    </p>
+
+    <div class="seal-btn" id="seal">
+      <img src="wax-seal.png" alt="Wax Seal">
+    </div>
+
+    <p style="margin-top:18px;font-style:italic;color:#7a1223;">
+      Open it, Love!
+    </p>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+  <div class="card">
+    <h2>🌹 My Darling 🌹</h2>
+    <p>
+      Kruthika,<br><br>
+
+      This rose carries a feeling I’ve been holding quietly <br>—<br>
+      one that blooms every time you cross my mind.<br><br>
+
+      There’s something about you,<br>
+      the way you smile, the way you exist,<br>
+      that makes my heart pause… and then beat a little warmer.<br><br>
+
+      If roses could speak,<br>
+      they would tell you how effortlessly beautiful you are,<br>
+      and how gently you’ve found a place in my thoughts.<br><br>
+
+      —<br><br>
+
+      On this Rose Day,<br>
+      I hope you feel just a fraction of what you make me feel.<br><br>
+
+      Happy Rose Day 🌹❤️
+    </p>
+  </div>
+</div>
+
+<div class="confetti"></div>
+
+<script>
+const confetti = document.querySelector('.confetti');
+const symbols = ['❤️','🎶','💌'];
+
+function confettiBurst(count = 18) {
+  for (let i = 0; i < count; i++) {
+    const span = document.createElement('span');
+    span.innerText = symbols[Math.floor(Math.random()*symbols.length)];
+    span.style.left = Math.random()*100 + 'vw';
+    span.style.fontSize = Math.random()*18 + 14 + 'px';
+    span.style.animationDuration = Math.random()*6 + 6 + 's';
+    confetti.appendChild(span);
+    setTimeout(() => span.remove(), 14000);
+  }
+}
+
+function bigFirework(x, y, particles = 45, spread = 600) {
+  for (let i = 0; i < particles; i++) {
+    const spark = document.createElement('div');
+    spark.className = 'spark';
+    spark.style.left = x + 'px';
+    spark.style.top = y + 'px';
+    spark.style.background =
+      ['#ff2d55','#ff6f91','#ffc75f','#f78fb3','#ff9aa2']
+      [Math.floor(Math.random()*5)];
+    spark.style.setProperty('--x', (Math.random()*spread - spread/2) + 'px');
+    spark.style.setProperty('--y', (Math.random()*spread - spread/2) + 'px');
+    document.body.appendChild(spark);
+    setTimeout(() => spark.remove(), 1300);
+  }
+}
+
+function fullPageFireworks() {
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  [[.2,.3],[.5,.25],[.8,.3],[.3,.6],[.7,.6],[.5,.45]].forEach((p,i)=>{
+    setTimeout(()=>bigFirework(w*p[0],h*p[1]),i*120);
+  });
+}
+
+let page2ConfettiInterval;
+
+document.getElementById('seal').addEventListener('click', () => {
+  fullPageFireworks();
+  confettiBurst(35);
+
+  setTimeout(() => {
+    document.body.classList.add('show-page2');
+    confetti.innerHTML = '';
+    confettiBurst(12);
+    page2ConfettiInterval = setInterval(()=>confettiBurst(6),1200);
+  }, 700);
+});
+
+window.onload = () => {
+  fullPageFireworks();
+  confettiBurst(20);
+};
+
+const music = document.getElementById("bgMusic");
+let started = false;
+
+document.addEventListener("click", () => {
+  if (!started) {
+    music.volume = 0.01;
+    music.play().catch(()=>{});
+    started = true;
+  }
+},{ once:true });
+</script>
+
+</body>
+</html>
